@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3j4co04xnsgm"]
+
+[ext_resource type="Texture2D" uid="uid://dvr1mtt5000h" path="res://icon_tile.svg" id="1_75ibd"]
+[ext_resource type="Script" path="res://levels/scripts/level_info.gd" id="1_t0n21"]
+[ext_resource type="PackedScene" uid="uid://dwu7uyfy2nfas" path="res://game_objects/player/player.tscn" id="2_cf70v"]
+[ext_resource type="Script" path="res://custom_nodes/Target2D.gd" id="3_kgcqv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5wjl"]
+texture = ExtResource("1_75ibd")
+texture_region_size = Vector2i(8, 8)
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_wsxup"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_h5wjl")
+
+[sub_resource type="Environment" id="Environment_wbln6"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 0.9
+glow_blend_mode = 1
+
+[node name="TestMaze" type="Node2D"]
+script = ExtResource("1_t0n21")
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(-339, 16)
+
+[node name="TileMap" type="TileMap" parent="Level"]
+tile_set = SubResource("TileSet_wsxup")
+format = 2
+layer_0/tile_data = PackedInt32Array(-393216, 0, 0, -327680, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, 0, 0, 0, -393215, 0, 0, -327679, 0, 0, -262143, 0, 0, -196607, 0, 0, -131071, 0, 0, 1, 0, 0, -393214, 0, 0, -327678, 0, 0, -262142, 0, 0, -196606, 0, 0, -131070, 0, 0, 2, 0, 0, -393213, 0, 0, -327677, 0, 0, -262141, 0, 0, -196605, 0, 0, -131069, 0, 0, 3, 0, 0, 4, 0, 0, -327675, 0, 0, -262139, 0, 0, -196603, 0, 0, -131067, 0, 0, 5, 0, 0, -327674, 0, 0, -262138, 0, 0, 6, 0, 0, -327673, 0, 0, -262137, 0, 0, -131065, 0, 0, 7, 0, 0, -327672, 0, 0, -262136, 0, 0, -131064, 0, 0, 8, 0, 0, -327671, 0, 0, -262135, 0, 0, -131063, 0, 0, 9, 0, 0, -327670, 0, 0, -262134, 0, 0, -131062, 0, 0, 10, 0, 0, -131061, 0, 0, 11, 0, 0, -393204, 0, 0, -327668, 0, 0, -262132, 0, 0, -196596, 0, 0, -131060, 0, 0, 12, 0, 0, 13, 0, 0, -393202, 0, 0, -327666, 0, 0, -262130, 0, 0, -196594, 0, 0, -131058, 0, 0, 14, 0, 0, -393201, 0, 0, -327665, 0, 0, -262129, 0, 0, -196593, 0, 0, -131057, 0, 0, 15, 0, 0, 16, 0, 0, -393199, 0, 0, -327663, 0, 0, -262127, 0, 0, -196591, 0, 0, -131055, 0, 0, 17, 0, 0, -524288, 0, 0, -458752, 0, 0, -524287, 0, 0, -458751, 0, 0, -524286, 0, 0, -458750, 0, 0, -524285, 0, 0, -458749, 0, 0, -524284, 0, 0, -458748, 0, 0, -524283, 0, 0, -458747, 0, 0, -524282, 0, 0, -458746, 0, 0, -524281, 0, 0, -458745, 0, 0, -524280, 0, 0, -458744, 0, 0, -524279, 0, 0, -458743, 0, 0, -524278, 0, 0, -458742, 0, 0, -524277, 0, 0, -458741, 0, 0, -524276, 0, 0, -458740, 0, 0, -524275, 0, 0, -524274, 0, 0, -524273, 0, 0, -524272, 0, 0, -524271, 0, 0, -65521, 0, 0, -65522, 0, 0, -65531, 0, 0, -393200, 0, 0, -524270, 0, 0, -524269, 0, 0, -458733, 0, 0, -393197, 0, 0, -327661, 0, 0, -262125, 0, 0, -196589, 0, 0, -131053, 0, 0, -65517, 0, 0, 19, 0, 0, 18, 0, 0)
+
+[node name="Target2D" type="Marker2D" parent="Level"]
+position = Vector2(16, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D2" type="Marker2D" parent="Level"]
+position = Vector2(144, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D3" type="Marker2D" parent="Level"]
+position = Vector2(144, -176)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D4" type="Marker2D" parent="Level"]
+position = Vector2(368, -176)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D5" type="Marker2D" parent="Level"]
+position = Vector2(368, -83)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D6" type="Marker2D" parent="Level"]
+position = Vector2(206, -83)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D7" type="Marker2D" parent="Level"]
+position = Vector2(206, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D8" type="Marker2D" parent="Level"]
+position = Vector2(431, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D9" type="Marker2D" parent="Level"]
+position = Vector2(431, -209)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D10" type="Marker2D" parent="Level"]
+position = Vector2(590, -209)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D11" type="Marker2D" parent="Level"]
+position = Vector2(590, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D12" type="Marker2D" parent="Level"]
+position = Vector2(527, -16)
+script = ExtResource("3_kgcqv")
+
+[node name="Target2D13" type="Marker2D" parent="Level"]
+position = Vector2(527, -144)
+script = ExtResource("3_kgcqv")
+
+[node name="Player" parent="." instance=ExtResource("2_cf70v")]
+position = Vector2(-323, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -63)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wbln6")
