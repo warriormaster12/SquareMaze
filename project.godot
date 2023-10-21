@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Square Maze"
-run/main_scene="res://levels/test_maze.tscn"
+run/main_scene="res://levels/level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -52,8 +52,6 @@ move_d={
 [physics]
 
 2d/run_on_separate_thread=true
-common/physics_ticks_per_second=80
-2d/solver/solver_iterations=20
 
 [rendering]
 

@@ -6,6 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktkp2"]
 shader = ExtResource("1_fjpcf")
+shader_parameter/dissolve_value = 1.0
 shader_parameter/emission_power = 1.2
 shader_parameter/color = Color(1, 0, 0, 1)
 
