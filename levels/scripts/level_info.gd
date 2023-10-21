@@ -31,4 +31,12 @@ func find_next_pos(direction: Vector2) -> Vector2:
 		return Vector2.ZERO
 	return targets[current_target].global_position
 
+func last_pos() -> void:
+	for i in range(0, targets.size()):
+		var target: Target2D = targets[i]
+		if target.global_position == player.last_pos:
+			current_target = i
+			break
+	next_target = clamp(current_target + 1, 0, targets.size() - 1)
+	last_target = clamp(current_target - 1, 0, targets.size() - 1)
 	

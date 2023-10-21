@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3j4co04xnsgm"]
+[gd_scene load_steps=10 format=3 uid="uid://b3j4co04xnsgm"]
 
 [ext_resource type="Texture2D" uid="uid://dvr1mtt5000h" path="res://icon_tile.svg" id="1_75ibd"]
 [ext_resource type="Script" path="res://levels/scripts/level_info.gd" id="1_t0n21"]
 [ext_resource type="PackedScene" uid="uid://dwu7uyfy2nfas" path="res://game_objects/player/player.tscn" id="2_cf70v"]
 [ext_resource type="Script" path="res://custom_nodes/Target2D.gd" id="3_kgcqv"]
+[ext_resource type="PackedScene" uid="uid://bq1np86e1bnw" path="res://game_objects/reward/reward.tscn" id="4_x5in3"]
+[ext_resource type="PackedScene" uid="uid://c0tr8a2mpslc7" path="res://game_objects/traps/triangle_trap.tscn" id="5_u4d06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5wjl"]
 texture = ExtResource("1_75ibd")
@@ -22,9 +24,9 @@ sources/0 = SubResource("TileSetAtlasSource_h5wjl")
 [sub_resource type="Environment" id="Environment_wbln6"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 2.0
-glow_strength = 0.9
+glow_strength = 1.1
 glow_blend_mode = 1
+glow_hdr_threshold = 0.41
 
 [node name="TestMaze" type="Node2D"]
 script = ExtResource("1_t0n21")
@@ -89,6 +91,10 @@ script = ExtResource("3_kgcqv")
 position = Vector2(527, -144)
 script = ExtResource("3_kgcqv")
 
+[node name="Reward" parent="Level/Target2D13" node_paths=PackedStringArray("normal_trap_container", "back_track_trap_container") instance=ExtResource("4_x5in3")]
+normal_trap_container = NodePath("../../../NormalTrapContainer")
+back_track_trap_container = NodePath("../../../BackTrapContainer")
+
 [node name="Player" parent="." instance=ExtResource("2_cf70v")]
 position = Vector2(-323, 0)
 
@@ -97,3 +103,56 @@ position = Vector2(0, -63)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wbln6")
+
+[node name="NormalTrapContainer" type="Node2D" parent="."]
+
+[node name="TriangleTrap6" parent="NormalTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(77, -31.885)
+rotation = 1.5708
+wait_time = 1.2
+
+[node name="TriangleTrap" parent="NormalTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(-131, -143)
+wait_time = 1.6
+
+[node name="TriangleTrap2" parent="NormalTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(-34, -47)
+buffer_wait = 0.2
+wait_time = 1.2
+
+[node name="TriangleTrap4" parent="NormalTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(-1.99998, -47)
+wait_time = 1.2
+
+[node name="TriangleTrap5" parent="NormalTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(77, -160.915)
+rotation = 1.5708
+buffer_wait = 2.5
+wait_time = 1.2
+
+[node name="BackTrapContainer" type="Node2D" parent="."]
+
+[node name="TriangleTrap6" parent="BackTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(109, -81)
+rotation = -1.5708
+wait_time = 1.2
+
+[node name="TriangleTrap" parent="BackTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(-35, -143)
+wait_time = 1.6
+
+[node name="TriangleTrap2" parent="BackTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(157, -175)
+buffer_wait = 0.2
+wait_time = 1.2
+
+[node name="TriangleTrap4" parent="BackTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(189, -175)
+hidden_wait_time = 0.6
+wait_time = 1.2
+
+[node name="TriangleTrap5" parent="BackTrapContainer" instance=ExtResource("5_u4d06")]
+position = Vector2(77, -112)
+rotation = 1.5708
+buffer_wait = 1.0
+wait_time = 1.3

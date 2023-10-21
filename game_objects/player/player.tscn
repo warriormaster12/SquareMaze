@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwu7uyfy2nfas"]
+[gd_scene load_steps=6 format=3 uid="uid://dwu7uyfy2nfas"]
 
 [ext_resource type="Script" path="res://game_objects/player/player_controller.gd" id="1_fgduw"]
-[ext_resource type="Shader" path="res://game_objects/player/player.gdshader" id="2_ano08"]
 [ext_resource type="Texture2D" uid="uid://jdy1vswrs07x" path="res://assets/sprites/player_sprite.png" id="2_lvr81"]
+[ext_resource type="Shader" path="res://assets/shaders/sprite_glow.gdshader" id="2_sb180"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2ujt"]
-shader = ExtResource("2_ano08")
+shader = ExtResource("2_sb180")
 shader_parameter/emission_power = 1.2
-shader_parameter/color = Color(1.2, 1.2, 1.2, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gi73y"]
+size = Vector2(32, 32)
 
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_fgduw")
@@ -16,3 +19,9 @@ speed = 1000.0
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_s2ujt")
 texture = ExtResource("2_lvr81")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("RectangleShape2D_gi73y")

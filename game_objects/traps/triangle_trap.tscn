@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0tr8a2mpslc7"]
+
+[ext_resource type="Script" path="res://game_objects/traps/trap.gd" id="1_16p3y"]
+[ext_resource type="Texture2D" uid="uid://bfdrp2bndrmhp" path="res://assets/sprites/triangle_trap.png" id="1_cgiph"]
+[ext_resource type="Shader" path="res://assets/shaders/sprite_glow.gdshader" id="1_fjpcf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktkp2"]
+shader = ExtResource("1_fjpcf")
+shader_parameter/emission_power = 1.2
+shader_parameter/color = Color(1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h53hw"]
+size = Vector2(32, 32)
+
+[node name="TriangleTrap" type="Node2D"]
+script = ExtResource("1_16p3y")
+max_scale = 1.0
+
+[node name="TriangleTrap" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ktkp2")
+position = Vector2(0, -13)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_cgiph")
+
+[node name="Area2D" type="Area2D" parent="TriangleTrap"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriangleTrap/Area2D"]
+shape = SubResource("RectangleShape2D_h53hw")
+
+[node name="WaitTime" type="Timer" parent="."]
+
+[connection signal="timeout" from="WaitTime" to="." method="_on_wait_time_timeout"]

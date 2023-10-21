@@ -54,3 +54,7 @@ move_d={
 2d/run_on_separate_thread=true
 common/physics_ticks_per_second=80
 2d/solver/solver_iterations=20
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
