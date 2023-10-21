@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0tr8a2mpslc7"]
+[gd_scene load_steps=8 format=3 uid="uid://c0tr8a2mpslc7"]
 
 [ext_resource type="Script" path="res://game_objects/traps/trap.gd" id="1_16p3y"]
 [ext_resource type="Texture2D" uid="uid://bfdrp2bndrmhp" path="res://assets/sprites/triangle_trap.png" id="1_cgiph"]
 [ext_resource type="Shader" path="res://assets/shaders/sprite_glow.gdshader" id="1_fjpcf"]
+[ext_resource type="AudioStream" uid="uid://0iaj4bs814wj" path="res://assets/sfx/player_hit.wav" id="4_c24o4"]
+[ext_resource type="AudioStream" uid="uid://b5kijghwd4wua" path="res://assets/sfx/player_hit_reverse.wav" id="5_o65lh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktkp2"]
 shader = ExtResource("1_fjpcf")
@@ -24,11 +26,23 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_cgiph")
 
 [node name="Area2D" type="Area2D" parent="TriangleTrap"]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriangleTrap/Area2D"]
 shape = SubResource("RectangleShape2D_h53hw")
 
 [node name="WaitTime" type="Timer" parent="."]
+
+[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_c24o4")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="AudioPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_o65lh")
+volume_db = -7.0
+max_distance = 1000.0
+bus = &"SFX"
 
 [connection signal="timeout" from="WaitTime" to="." method="_on_wait_time_timeout"]
