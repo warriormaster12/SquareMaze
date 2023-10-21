@@ -14,8 +14,8 @@ noise = SubResource("FastNoiseLite_7u7qi")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2ujt"]
 shader = ExtResource("2_sb180")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/emission_power = 1.1
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/emission_power = 1.05
+shader_parameter/color = Color(0.533037, 0.533037, 0.533037, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_0aido")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gi73y"]

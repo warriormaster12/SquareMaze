@@ -29,12 +29,16 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e6ig5")
 sources/1 = SubResource("TileSetAtlasSource_0amd0")
 
-[sub_resource type="Environment" id="Environment_wbln6"]
+[sub_resource type="Environment" id="Environment_ggy2i"]
 background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 0.5
+tonemap_white = 2.0
 glow_enabled = true
-glow_strength = 1.1
+glow_intensity = 1.0
+glow_strength = 1.2
 glow_blend_mode = 1
-glow_hdr_threshold = 0.41
+glow_hdr_threshold = 0.5
 
 [node name="Level1" type="Node2D"]
 
@@ -54,7 +58,7 @@ position = Vector2(-79, 73)
 zoom = Vector2(0.85, 0.85)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wbln6")
+environment = SubResource("Environment_ggy2i")
 
 [node name="Reward" parent="." node_paths=PackedStringArray("normal_trap_container", "back_track_trap_container") instance=ExtResource("3_cqbmm")]
 position = Vector2(316, -160)
