@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_width=600
+window/size/viewport_height=800
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
@@ -51,6 +51,10 @@ move_d={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 2d/run_on_separate_thread=true
@@ -59,5 +63,6 @@ move_d={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 viewport/hdr_2d=true

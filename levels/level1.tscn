@@ -56,7 +56,7 @@ position = Vector2(-323, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-35.465, -63)
-zoom = Vector2(1.18, 1.18)
+zoom = Vector2(0.86, 0.86)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wbln6")

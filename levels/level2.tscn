@@ -69,7 +69,7 @@ position = Vector2(-131, -191)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-79, 73)
-zoom = Vector2(0.85, 0.85)
+zoom = Vector2(0.655, 0.655)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ggy2i")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://betg478sb3gs5"]
+
+[ext_resource type="Script" path="res://game_objects/player/SwipeDetector.gd" id="1_0dcsa"]
+
+[node name="SwipeDetector" type="Node"]
+script = ExtResource("1_0dcsa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

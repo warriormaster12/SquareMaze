@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwu7uyfy2nfas"]
+[gd_scene load_steps=15 format=3 uid="uid://dwu7uyfy2nfas"]
 
 [ext_resource type="Script" path="res://game_objects/player/player_controller.gd" id="1_fgduw"]
 [ext_resource type="Texture2D" uid="uid://jdy1vswrs07x" path="res://assets/sprites/player_sprite.png" id="2_lvr81"]
 [ext_resource type="Shader" path="res://assets/shaders/sprite_glow.gdshader" id="2_sb180"]
 [ext_resource type="AudioStream" uid="uid://bx8nxo51s3xga" path="res://assets/sfx/dash.wav" id="4_3hidd"]
 [ext_resource type="PackedScene" uid="uid://bwnna31p6367v" path="res://game_objects/player/player_hud.tscn" id="5_vhu0q"]
+[ext_resource type="PackedScene" uid="uid://betg478sb3gs5" path="res://game_objects/player/swipe_detector.tscn" id="6_rgppa"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7u7qi"]
 
@@ -149,3 +150,7 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("5_vhu0q")]
+
+[node name="SwipeDetector" parent="." instance=ExtResource("6_rgppa")]
+
+[connection signal="swiped" from="SwipeDetector" to="." method="_on_swipe_detector_swiped"]

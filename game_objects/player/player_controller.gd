@@ -3,6 +3,7 @@ class_name PlayerController2D
 
 @export var speed:float = 300
 @export var ray_length: float = 1000
+@export var swipe_button: SwipeScreenButton = null
 
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var ray_down: RayCast2D = $DownRay
@@ -23,19 +24,18 @@ var can_move: bool = true
 signal on_level_finished
 
 func _ready() -> void:
-	ray_down.target_position *= (player_sprite.texture.get_width() * 0.5)
-	ray_up.target_position *= (player_sprite.texture.get_width() * 0.5)
-	ray_left.target_position *= (player_sprite.texture.get_width() * 0.5)
-	ray_right.target_position *= (player_sprite.texture.get_width() * 0.5)
+	ray_down.target_position *= (player_sprite.texture.get_width() * 0.7)
+	ray_up.target_position *= (player_sprite.texture.get_width() * 0.7)
+	ray_left.target_position *= (player_sprite.texture.get_width() * 0.7)
+	ray_right.target_position *= (player_sprite.texture.get_width() * 0.7)
 
-func _process(_delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	if selected_ray:
 		if selected_ray.is_colliding():
 			var next_pos: Vector2 = selected_ray.get_collision_point() + selected_ray.get_collision_normal() * (player_sprite.texture.get_width() * 0.5)
 			global_position = next_pos
 			direction = Vector2.ZERO
-
-func _physics_process(delta: float) -> void:
 	if direction.length() == 0 && can_move:
 		if Input.is_action_just_pressed("move_r"):
 			if !ray_right.is_colliding():
@@ -80,3 +80,31 @@ func level_finished() -> void:
 	anim_player.play("level_finished", -1, 2.0)
 	await anim_player.animation_finished
 	on_level_finished.emit()
+
+
+func _on_swipe_detector_swiped(dir: Vector2) -> void:
+	if direction.length() == 0 && can_move:
+		if dir.x == 1:
+			if !ray_right.is_colliding():
+				audio_player.play()
+				last_pos = global_position
+				selected_ray = ray_right
+				direction = dir
+		if dir.x == -1:
+			if !ray_left.is_colliding():
+				audio_player.play()
+				last_pos = global_position
+				selected_ray = ray_left
+				direction = dir
+		if dir.y == 1:
+			if !ray_down.is_colliding():
+				audio_player.play()
+				last_pos = global_position
+				selected_ray = ray_down
+				direction = dir
+		if dir.y == -1:
+			if !ray_up.is_colliding():
+				audio_player.play()
+				last_pos = global_position
+				selected_ray = ray_up
+				direction = dir
