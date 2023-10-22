@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwxiu8exaiakp"]
+
+[ext_resource type="Script" path="res://game_objects/level_finished/level_finished.gd" id="1_n87x1"]
+[ext_resource type="Shader" path="res://assets/shaders/sprite_glow.gdshader" id="2_r0tq5"]
+[ext_resource type="Texture2D" uid="uid://rkjliy74mqp2" path="res://assets/sprites/exit.png" id="3_upm8m"]
+[ext_resource type="AudioStream" uid="uid://ikyfxyriihlv" path="res://assets/sfx/coin_pickup.wav" id="4_pbpjp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncd0q"]
+shader = ExtResource("2_r0tq5")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/emission_power = 1.2
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqg0x"]
+radius = 12.5623
+
+[node name="LevelFinished" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_n87x1")
+
+[node name="Exit" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ncd0q")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_upm8m")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qqg0x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pbpjp")
+bus = &"SFX"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

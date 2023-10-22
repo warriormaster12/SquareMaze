@@ -1,31 +1,42 @@
-[gd_scene load_steps=11 format=3 uid="uid://catr2p3jph748"]
+[gd_scene load_steps=16 format=3 uid="uid://catr2p3jph748"]
 
-[ext_resource type="Texture2D" uid="uid://dabn7gp108vat" path="res://assets/sprites/level_rect_light.png" id="1_q0xhb"]
-[ext_resource type="Texture2D" uid="uid://dwpk87ojenjt" path="res://assets/sprites/level_rect.png" id="2_1y8pd"]
+[ext_resource type="Texture2D" uid="uid://dabn7gp108vat" path="res://assets/sprites/level_rect_light.png" id="1_1dtmd"]
+[ext_resource type="Texture2D" uid="uid://dwpk87ojenjt" path="res://assets/sprites/level_rect.png" id="2_3v3ql"]
 [ext_resource type="PackedScene" uid="uid://dwu7uyfy2nfas" path="res://game_objects/player/player.tscn" id="2_dc373"]
 [ext_resource type="PackedScene" uid="uid://bq1np86e1bnw" path="res://game_objects/reward/reward.tscn" id="3_cqbmm"]
+[ext_resource type="PackedScene" uid="uid://dwxiu8exaiakp" path="res://game_objects/level_finished/level_finished.tscn" id="3_i5d1i"]
 [ext_resource type="PackedScene" uid="uid://c0tr8a2mpslc7" path="res://game_objects/traps/triangle_trap.tscn" id="4_02my3"]
 [ext_resource type="AudioStream" uid="uid://camcs4pdgbgmw" path="res://assets/music/extradimensional_portalhopping.wav" id="5_kfi7d"]
+[ext_resource type="PackedScene" uid="uid://r16dnmwtmnc3" path="res://levels/fade_in_out.tscn" id="7_2i3wk"]
+[ext_resource type="PackedScene" uid="uid://drbuqbe0uuqbl" path="res://levels/main_menu.tscn" id="8_5od5r"]
+[ext_resource type="PackedScene" uid="uid://bw5ho2qly7c2l" path="res://game_objects/door/door.tscn" id="8_n3fl6"]
+[ext_resource type="PackedScene" uid="uid://do4kf7xb14bo7" path="res://game_objects/door/key.tscn" id="9_toe5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e6ig5"]
-texture = ExtResource("1_q0xhb")
+texture = ExtResource("1_1dtmd")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0amd0"]
-texture = ExtResource("2_1y8pd")
+texture = ExtResource("2_3v3ql")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_t0l2f"]
+[sub_resource type="TileSet" id="TileSet_awtqs"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e6ig5")
 sources/1 = SubResource("TileSetAtlasSource_0amd0")
 
@@ -46,9 +57,12 @@ glow_hdr_threshold = 0.5
 position = Vector2(-339, 16)
 
 [node name="TileMap" type="TileMap" parent="Level"]
-tile_set = SubResource("TileSet_t0l2f")
+tile_set = SubResource("TileSet_awtqs")
 format = 2
 layer_0/tile_data = PackedInt32Array(-393211, 0, 1610612736, -327675, 0, 1610612736, -262139, 0, 1610612736, -196603, 0, 1610612736, -131067, 0, 1610612736, -65531, 0, 1610612736, 5, 0, 1610612736, -393209, 0, 1610612736, -327673, 0, 1610612736, -262137, 0, 1610612736, -196601, 0, 1610612736, -131065, 0, 1610612736, -65529, 0, 1610612736, 7, 0, 1610612736, 65540, 0, 805306368, 65539, 0, 805306368, 65538, 0, 805306368, 65537, 0, 805306368, 65536, 0, 805306368, 131071, 0, 805306368, 131070, 0, 805306368, 131069, 0, 805306368, 65544, 0, 805306368, 65545, 0, 805306368, 65546, 0, 805306368, 65547, 0, 805306368, 65548, 0, 805306368, 13, 0, 1342177280, -65523, 0, 1342177280, -131059, 0, 1342177280, -196595, 0, 1342177280, -262131, 0, 1342177280, -327667, 0, 1342177280, -393203, 0, 1342177280, -458738, 0, 805306368, -458737, 0, 805306368, -458736, 0, 805306368, -458735, 0, 805306368, -458734, 0, 805306368, -458733, 0, 805306368, -458732, 0, 805306368, -327664, 0, 805306368, -327663, 0, 805306368, -327662, 0, 805306368, -327661, 0, 805306368, -327660, 0, 805306368, 196616, 0, 805306368, 196617, 0, 805306368, 196618, 0, 805306368, 196619, 0, 805306368, 196620, 0, 805306368, 196621, 0, 805306368, 196622, 0, 805306368, 131087, 0, 1342177280, 65551, 0, 1342177280, 15, 0, 1342177280, -65521, 0, 1342177280, -131057, 0, 1342177280, -196593, 0, 1342177280, -262129, 0, 1342177280, -458739, 1, 0, -327665, 1, 0, 196623, 1, 0, 65549, 1, 0, -393195, 1, 0, -458731, 1, 0, -327659, 1, 0, -458747, 1, 0, -458745, 1, 0, -524282, 1, 0, 65541, 1, 0, 65543, 1, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 327676, 0, 1610612736, 327674, 0, 1610612736, 393212, 0, 1610612736, 458748, 0, 1610612736, 524284, 0, 1610612736, 589820, 0, 1610612736, 655356, 0, 1610612736, 393210, 0, 1610612736, 458746, 0, 1610612736, 524282, 0, 1610612736, 589818, 0, 1610612736, 655354, 0, 1610612736, 720891, 1, 0, 131066, 0, 1342177280, 196602, 0, 1342177280, 262138, 0, 1342177280, 131068, 1, 0, 262140, 1, 0, 131067, 1, 0)
+
+[node name="LevelFinished" parent="." instance=ExtResource("3_i5d1i")]
+position = Vector2(-131, -191)
 
 [node name="Player" parent="." instance=ExtResource("2_dc373")]
 position = Vector2(-131, -191)
@@ -60,61 +74,63 @@ zoom = Vector2(0.85, 0.85)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ggy2i")
 
-[node name="Reward" parent="." node_paths=PackedStringArray("normal_trap_container", "back_track_trap_container") instance=ExtResource("3_cqbmm")]
+[node name="Reward" parent="." node_paths=PackedStringArray("level_finished", "normal_trap_container", "back_track_trap_container", "door_close") instance=ExtResource("3_cqbmm")]
 position = Vector2(316, -160)
+level_finished = NodePath("../LevelFinished")
 normal_trap_container = NodePath("../NormalTrapContainer")
 back_track_trap_container = NodePath("../BackTrapContainer")
+door_close = NodePath("../Door2")
 
 [node name="NormalTrapContainer" type="Node2D" parent="."]
-position = Vector2(-709, -165)
 
 [node name="TriangleTrap6" parent="NormalTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(77, -31.885)
+position = Vector2(-499, 204)
 rotation = 1.5708
 wait_time = 1.2
 
 [node name="TriangleTrap" parent="NormalTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-131, -143)
-wait_time = 1.6
+position = Vector2(-114, 63)
+rotation = -1.5708
+hidden_wait_time = 1.0
+wait_time = 1.1
 
 [node name="TriangleTrap2" parent="NormalTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-34, -47)
+position = Vector2(-422, 114)
 buffer_wait = 0.2
 wait_time = 1.2
 
 [node name="TriangleTrap4" parent="NormalTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-1.99998, -47)
+position = Vector2(-182, 113)
 wait_time = 1.2
 
 [node name="TriangleTrap5" parent="NormalTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(77, -160.915)
+position = Vector2(-147, -50)
 rotation = 1.5708
-buffer_wait = 2.5
-wait_time = 1.2
+hidden_wait_time = 1.0
+wait_time = 1.1
 
 [node name="BackTrapContainer" type="Node2D" parent="."]
-position = Vector2(-709, -165)
 
 [node name="TriangleTrap" parent="BackTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-35, -143)
+position = Vector2(203, -144)
 wait_time = 1.2
 
 [node name="TriangleTrap2" parent="BackTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-260, 18)
+position = Vector2(-89, 113)
 hidden_wait_time = 0.7
 wait_time = 1.5
 
 [node name="TriangleTrap4" parent="BackTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(-228, 18)
+position = Vector2(-57, 113)
 wait_time = 1.7
 
 [node name="TriangleTrap5" parent="BackTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(77, -112)
+position = Vector2(108, -54)
 rotation = 1.5708
 wait_time = 1.0
 
 [node name="TriangleTrap6" parent="BackTrapContainer" instance=ExtResource("4_02my3")]
-position = Vector2(109, -81)
+position = Vector2(140, 1)
 rotation = -1.5708
 wait_time = 1.0
 
@@ -122,3 +138,18 @@ wait_time = 1.0
 stream = ExtResource("5_kfi7d")
 autoplay = true
 bus = &"Music"
+
+[node name="FadeInOut" parent="." node_paths=PackedStringArray("music_player") instance=ExtResource("7_2i3wk")]
+music_player = NodePath("../Music")
+next_level = ExtResource("8_5od5r")
+
+[node name="Door" parent="." instance=ExtResource("8_n3fl6")]
+position = Vector2(-111.5, 80)
+is_open = false
+
+[node name="Door2" parent="." instance=ExtResource("8_n3fl6")]
+position = Vector2(-153, 80)
+
+[node name="Key" parent="." node_paths=PackedStringArray("door_open") instance=ExtResource("9_toe5g")]
+position = Vector2(-484, 313)
+door_open = NodePath("../Door")

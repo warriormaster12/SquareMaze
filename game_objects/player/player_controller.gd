@@ -20,6 +20,8 @@ var direction: Vector2 = Vector2.ZERO
 var selected_ray:RayCast2D = null
 var can_move: bool = true
 
+signal on_level_finished
+
 func _ready() -> void:
 	ray_down.target_position *= (player_sprite.texture.get_width() * 0.5)
 	ray_up.target_position *= (player_sprite.texture.get_width() * 0.5)
@@ -71,3 +73,10 @@ func on_hit() -> void:
 	global_position = last_pos
 	await anim_player.animation_finished
 	can_move = true
+
+func level_finished() -> void:
+	can_move = false
+	direction = Vector2.ZERO
+	anim_player.play("level_finished", -1, 2.0)
+	await anim_player.animation_finished
+	on_level_finished.emit()
