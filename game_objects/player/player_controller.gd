@@ -3,7 +3,6 @@ class_name PlayerController2D
 
 @export var speed:float = 300
 @export var ray_length: float = 1000
-@export var swipe_button: SwipeScreenButton = null
 
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var ray_down: RayCast2D = $DownRay
