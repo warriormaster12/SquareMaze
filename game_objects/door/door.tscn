@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw5ho2qly7c2l"]
 
 [ext_resource type="Script" path="res://game_objects/door/door.gd" id="1_igojx"]
-[ext_resource type="Texture2D" uid="uid://dwpk87ojenjt" path="res://assets/sprites/level_rect.png" id="1_s175i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bcg6e"]
+load_path = "res://.godot/imported/level_rect.png-ddc85008ec6f634420e54c18987f1809.ctex"
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_igojx")
@@ -9,7 +11,7 @@ script = ExtResource("1_igojx")
 [node name="LevelRect" type="Sprite2D" parent="."]
 position = Vector2(1, 16)
 scale = Vector2(0.3, 1)
-texture = ExtResource("1_s175i")
+texture = SubResource("CompressedTexture2D_bcg6e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1, 16)

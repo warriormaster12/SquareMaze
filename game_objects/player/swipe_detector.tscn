@@ -6,5 +6,5 @@
 script = ExtResource("1_0dcsa")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.25
 one_shot = true

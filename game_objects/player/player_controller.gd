@@ -12,6 +12,7 @@ class_name PlayerController2D
 @onready var ray_right: RayCast2D = $RightRay
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var player_hud: Control = $CanvasLayer/PlayerHUD
 var stop_moving: bool = false
 
 var move_tween: Tween = null
@@ -75,6 +76,7 @@ func on_hit() -> void:
 	can_move = true
 
 func level_finished() -> void:
+	player_hud.timer_on = false
 	can_move = false
 	direction = Vector2.ZERO
 	anim_player.play("level_finished", -1, 2.0)
